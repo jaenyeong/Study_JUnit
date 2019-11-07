@@ -16,4 +16,6 @@ dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.11'
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 }
