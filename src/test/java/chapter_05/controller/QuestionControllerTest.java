@@ -12,7 +12,7 @@ import java.util.Date;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-class QuestionControllerTest {
+public class QuestionControllerTest {
 	private QuestionController controller;
 
 	@Before
@@ -28,7 +28,8 @@ class QuestionControllerTest {
 		int id = controller.addBooleanQuestion("text");
 
 		Question question = controller.find(id);
-
+		// EntityManager에서 해당 ID로 값을 찾지 못해 Quesion 클래스가 NULL로 떨어짐
 		assertThat(question.getCreateTimestamp(), equalTo(now));
 	}
+
 }

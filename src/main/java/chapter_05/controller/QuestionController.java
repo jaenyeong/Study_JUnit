@@ -5,16 +5,14 @@ import chapter_05.domain.PercentileQuestion;
 import chapter_05.domain.Persistable;
 import chapter_05.domain.Question;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.time.Clock;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class QuestionController {
 	private Clock clock = Clock.systemUTC();
+	private EntityManager em;
 
 	private static EntityManagerFactory getEntityManagerFactory() {
 		return Persistence.createEntityManagerFactory("postgres-ds");
@@ -39,6 +37,7 @@ public class QuestionController {
 				.getResultList();
 	}
 
+	// 3
 	private void executeInTransaction(Consumer<EntityManager> func) {
 		EntityManager em = em();
 
@@ -55,9 +54,14 @@ public class QuestionController {
 		}
 	}
 
+	// 2
 	private int persist(Persistable object) {
 		object.setCreateTimestamp(clock.instant());
-		executeInTransaction((em) -> em.persist(object));
+		executeInTransaction((em) -> {
+			System.out.println("before em : " + em);
+			em.persist(object);
+			System.out.println("after em : " + em);
+		});
 		return object.getId();
 	}
 
@@ -74,6 +78,7 @@ public class QuestionController {
 		this.clock = clock;
 	}
 
+	// 1
 	public int addBooleanQuestion(String text) {
 		return persist(new BooleanQuestion(text));
 	}
