@@ -31,5 +31,4 @@ public class QuestionControllerTest {
 		// EntityManager에서 해당 ID로 값을 찾지 못해 Quesion 클래스가 NULL로 떨어짐
 		assertThat(question.getCreateTimestamp(), equalTo(now));
 	}
-
 }
