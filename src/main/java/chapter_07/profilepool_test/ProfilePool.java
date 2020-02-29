@@ -1,4 +1,4 @@
-package chapter_06;
+package chapter_07.profilepool_test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,8 +18,12 @@ public class ProfilePool {
 	}
 
 	public List<Profile> ranked() {
+		// 실패
+//		Collections.sort(profiles,
+//				(p1, p2) -> ((Integer) p1.score()).compareTo(p2.score()));
+		// 성공
 		Collections.sort(profiles,
-				(p1, p2) -> ((Integer) p1.score()).compareTo(p2.score()));
+				(p1, p2) -> ((Integer) p2.score()).compareTo(p1.score()));
 		return profiles;
 	}
 }
