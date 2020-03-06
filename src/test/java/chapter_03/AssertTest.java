@@ -14,6 +14,7 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.number.IsCloseTo.*;
+import static org.hamcrest.Matchers.startsWith; // startsWith 메소드 에러로 추가
 
 public class AssertTest {
 
