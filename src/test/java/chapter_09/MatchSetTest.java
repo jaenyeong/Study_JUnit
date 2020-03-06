@@ -24,12 +24,13 @@ public class MatchSetTest {
 	private Answer answerHasOnsiteDaycare;
 	private Answer answerNoOnsiteDaycare;
 
-
-	private Map<String, Answer> answers;
+//	private Map<String, Answer> answers;
+	private AnswerCollection answers;
 
 	@Before
 	public void createAnswers() {
-		answers = new HashMap<>();
+//		answers = new HashMap<>();
+		answers = new AnswerCollection();
 	}
 
 	@Before
@@ -52,9 +53,9 @@ public class MatchSetTest {
 		answerNoOnsiteDaycare = new Answer(questionOnsiteDaycare, Bool.FALSE);
 	}
 
-	private void add(Answer answer) {
-		answers.put(answer.getQuestionText(), answer);
-	}
+//	private void add(Answer answer) {
+//		answers.put(answer.getQuestionText(), answer);
+//	}
 
 	private MatchSet createMatchSet() {
 		return new MatchSet(answers, criteria);
@@ -62,7 +63,8 @@ public class MatchSetTest {
 
 	@Test
 	public void matchAnswersFalseWhenMustMatchCriteriaNotMet() {
-		add(answerDoesNotReimburseTuition);
+//		add(answerDoesNotReimburseTuition);
+		answers.add(answerDoesNotReimburseTuition);
 		criteria.add(new Criterion(answerReimbursesTuition, Weight.MustMatch));
 
 		assertFalse(createMatchSet().matches());
@@ -70,7 +72,8 @@ public class MatchSetTest {
 
 	@Test
 	public void matchAnswersTrueForAnyDontCareCriteria() {
-		add(answerDoesNotReimburseTuition);
+//		add(answerDoesNotReimburseTuition);
+		answers.add(answerDoesNotReimburseTuition);
 		criteria.add(new Criterion(answerReimbursesTuition, Weight.DontCare));
 
 		assertTrue(createMatchSet().matches());
