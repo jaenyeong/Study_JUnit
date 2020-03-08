@@ -16,24 +16,18 @@
         <description>postgres persistence unit</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>chapter_05.domain.BooleanQuestion</class>
-        <class>chapter_05.domain.PercentileQuestion</class>
+<!--        <class>chapter_05.domain.BooleanQuestion</class>-->
+<!--        <class>chapter_05.domain.PercentileQuestion</class>-->
+        <class>chapter_13.database_test.domain.BooleanQuestion</class>
+        <class>chapter_13.database_test.domain.PercentileQuestion</class>
 
         <properties>
-<!--            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />-->
-            <property name="javax.persistence.jdbc.Driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/junit" />
+            <property name="javax.persistence.jdbc.user" value="kimjaenyeong" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
 
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/studyJunit" />-->
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/junit" />
-
-<!--            <property name="javax.persistence.jdbc.user" value="jlangr" />-->
-            <property name="javax.persistence.jdbc.user" value="sa" />
-            <property name="javax.persistence.jdbc.password" value="" />
-
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />-->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+<!--            <property name="hibernate.hbm2ddl.auto" value="create" />-->
             <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.transaction.flush_before_completion" value="true" />
